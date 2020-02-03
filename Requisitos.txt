@@ -1,0 +1,40 @@
+# Trabajo Desarrollo Web en Cliente 2ºTrimestre
+
+Este trabajo consiste en realizar principalmente un CRUD eny otras funcionalidades que suelen existir en una aplicación Web con javascript, AJAX y PHP, del proyecto realizado en el primer trimestre. 
+
+Las funcionalidades a incluir son las siguientes y debe realizarse en diferentes parte de la aplicación 1 por cada integrante:
+
+* Validación en servidor mediante ajax de un formulario de la aplicación.(1 punto)
+* CRUD mediante ajax en la aplicación:
+  * Añadir(1 punto)
+  * Borrar(1 punto)
+  * Editar(1 punto)
+  * Mostrar(1 punto)
+* Realizar una búsqueda mediante un texto ajax y que muestre los resultados.(1 punto)
+* Realizar una búsqueda mediante uno o varios checkboxs o radio, que cuando se pulsen, deben realizar un filtro de los resultados por ajax y mostrarlos en la web.(1 punto)
+* Paginar los elementos mediante ajax.(1 punto)
+
+Si se utiliza las tecnologías vista en el primer trimestre para la gestión de un proyecto: Babel, Uglify y Eslint correctamente se obtnedrá 1 punto más.
+
+Si se utiliza una librería de javascriot( Ejemplos de Jquey-ui, datatable.js,etc...)dónde se combine javascript y ajax se obtendrá 1 punto más.
+
+Deberá realizarse al menos 2 peticiones por ajax por XHR, fetch y jquery por cada integrante del grupo.(Obligatorio)
+
+Deberá indicarse en un documento que tecnología se ha usado para cada petición.(Obligatorio)
+
+Todas las peticiones que se hagan al servidor debe tener su símbolo de carga correspondiente.(Obligatorio)
+
+Debe gestionarse que pasaría si hubiese un error durante la petición ajax.(Obligatorio)
+
+Debe informase al usuario cada vez que empieza una petición, con el símbolo de carga, y mostrarle un mensaje cada vez que termine.(Obligatorio)
+
+Por cada punto obligatorio que no se cumpla se quitará 1 punto del trabajo.
+
+**!!!!!IMPORTANTE!!!!!**
+
+Los siguientes puntos generará el suspenso inmediato del trabajo:
+
+	* Debe incluirse un informe del reparto de tareas y el tiempo empleado en cada función. Si no se cumple este punto, todos los 	integrantes suspenderán el trabajo.
+	* En este trabajo es obligatorio usar la versión de bootstrap vista en la asignatura de Interfaces.
+	* En servidor deberá usarse PHP y si se utiliza una API, deberá explicarse como montar dicha API.
+	* Pasar SQL para crear BD usadas para el proyecto.
