@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-02-2020 a las 20:47:47
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 04-02-2020 a las 16:28:38
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,24 @@ CREATE TABLE `cachimbas` (
 --
 
 INSERT INTO `cachimbas` (`id`, `marca`, `modelo`, `color`, `precio`, `stock`, `f_create`) VALUES
-(1, 'Kaya', 'PNX480', 'Verde', 41.95, 5, '2020-02-03');
+(1, 'Kaya', 'PNX480', 'Verde', 41.95, 5, '2020-02-03'),
+(2, 'Kaya', 'SPN-480', 'Azul', 44.95, 23, '2020-02-04'),
+(3, 'Kaya', 'SPN-480', 'Rosa', 44.95, 17, '2020-02-04'),
+(4, 'Kaya', 'Elox-730', 'Azul', 119.95, 10, '2020-02-04'),
+(5, 'Kaya', 'Elox-730', 'Negra', 119.95, 10, '2020-02-04'),
+(6, 'Kaya', 'Elox-730', 'Roja', 119.95, 10, '2020-02-04'),
+(7, 'Starbuzz', 'Wood', 'Negra', 169.95, 7, '2020-02-04'),
+(8, 'Starbuzz', 'Challanger', 'Azul', 169.95, 7, '2020-02-04'),
+(9, 'Starbuzz', 'Wood', 'Roja', 169.95, 7, '2020-02-04'),
+(10, 'Starbuzz', 'Blanca', 'Negra', 169.95, 7, '2020-02-04'),
+(11, 'Caesar', 'Kaiser', 'Negra', 89, 34, '2020-02-04'),
+(12, 'Caesar', 'Kaiser', 'Azul', 89, 24, '2020-02-04'),
+(13, 'Caesar', 'Kaiser', 'Roja', 89, 34, '2020-02-04'),
+(14, 'Caesar', 'Final', 'Negra', 59.9, 14, '2020-02-04'),
+(15, 'Caesar', 'Final', 'Roja', 59.9, 14, '2020-02-04'),
+(16, 'Caesar', 'Final', 'Naranja', 59.9, 12, '2020-02-04'),
+(17, 'Aladin', 'MVP', 'Negra', 99.9, 11, '2020-02-04'),
+(18, 'Aladin', 'MVP', 'Blanca', 99.9, 8, '2020-02-04');
 
 -- --------------------------------------------------------
 
@@ -59,6 +76,14 @@ CREATE TABLE `pedidos` (
   `f_create` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `id_usuarios`, `direccion`, `importe`, `f_create`) VALUES
+(1, 1, 'C/ nombre n: 17', 69.95, '2020-02-04'),
+(3, 2, 'C/ nombreParolo n: 13', 69.95, '2020-02-04');
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +97,14 @@ CREATE TABLE `pedido_cachimbas` (
   `cantidad` int(11) NOT NULL,
   `f_create` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_cachimbas`
+--
+
+INSERT INTO `pedido_cachimbas` (`id`, `id_pedido`, `id_cachimba`, `cantidad`, `f_create`) VALUES
+(1, 1, 4, 2, '2020-02-04'),
+(2, 1, 5, 1, '2020-02-04');
 
 -- --------------------------------------------------------
 
@@ -93,7 +126,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `email`, `password`, `f_create`) VALUES
-(1, 'Daniel', 'Luque Castro', 'daniluquecastro@gmail.com', 'passwordprueba', '2020-02-03');
+(1, 'Daniel', 'Luque Castro', 'daniluquecastro@gmail.com', 'passwordprueba', '2020-02-03'),
+(2, 'Pablo', 'Rodriguez Lopez', 'pablo.rodriguez@adaits.es', 'password', '2020-02-04'),
+(3, 'Ricardo', 'Cabrera Valero', 'ricardo.cabrera@adaits.es', 'password', '2020-02-04');
 
 --
 -- Índices para tablas volcadas
@@ -134,25 +169,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cachimbas`
 --
 ALTER TABLE `cachimbas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_cachimbas`
 --
 ALTER TABLE `pedido_cachimbas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
