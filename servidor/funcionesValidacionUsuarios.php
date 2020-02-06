@@ -2,7 +2,7 @@
 
 function validarnombre($nombre){
     $errores = array();
-    if(!preg_match("/^[A-ZÑa-zñ]*$/", $nombre) || empty($nombre)) {
+    if(!preg_match("/^[A-ZÑa-zñ ]*$/", $nombre) || empty($nombre)) {
     $errores[] = "Solo se admiten letras, introduce un nombre válidao.";
     }
     return $errores;
@@ -10,7 +10,7 @@ function validarnombre($nombre){
 
 function validarapellidos($apellidos){
     $errores = array();
-    if(!preg_match("/^[A-ZÑa-zñ]*$/", $apellidos) || empty($apellidos)) {
+    if(!preg_match("/^[A-ZÑa-zñ ]*$/", $apellidos) || empty($apellidos)) {
     $errores[] = "Solo se admiten letras, introduce un apellido válido.";
     }
     return $errores;
