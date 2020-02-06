@@ -6,9 +6,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
 
-    <script src="../js/validacionCachimbas.js" defer></script>
+
+    <script src="../js/validacionUsuarios.js" defer></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,85 +31,57 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="usuarios.php">usuarios</a>
+                    <a class="nav-link" href="#">usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">pedidos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">cachimbas</a>
+                    <a class="nav-link" href="cachimbas.php">cachimbas</a>
                 </li>
             </ul>
         </div>
     </nav>
-
-    <div class="row">
-        <aside class="col-sm-2">
-            <div class="card">
-                <article class="card-group-item">
-                    <header class="card-header">
-                        <h6 class="title">Marcas</h6>
-                    </header>
-                    <div class="filter-content">
-                        <div class="card-body">
-                            <form>
-                                <label class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <span class="form-check-label">
-                                        Kaya
-                                    </span>
-                                </label> <!-- form-check.// -->
-                                <label class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <span class="form-check-label">
-                                        Whookah
-                                    </span>
-                                </label> <!-- form-check.// -->
-                                <label class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <span class="form-check-label">
-                                        Aladin
-                                    </span>
-                                </label>
-                            </form>
-
-                        </div>
-                    </div>
-                </article>
+    <div class="container">
+        <div class="row col-12">
+            <div class="md-form mt-0">
+                <input class="form-control" type="text" placeholder="Buscar..." aria-label="Search">
             </div>
-        </aside>
+        </div>
     </div>
 
-    <!-- FORMULARIO VALIDACION XHR -->
 
-    <?php
+
+
+<!-- FORMULARIO VALIDACION XHR -->
+
+
+<?php
 $mostrarFormulario = true;
 $errores = array();
-$marca = "";
-$modelo = "";
-$color = "";
-$precio = "";
-$stock = "";
+$nombre = "";
+$apellidos = "";
+$password = "";
+$email = "";
+
 if(count($_POST) > 0){
-    $marca = isset($_POST["marca"])?$_POST["marca"]:"";
-    $modelo = isset($_POST["modelo"])?$_POST["modelo"]:"";
-    $color = isset($_POST["color"])?$_POST["color"]:"";
-    $precio = isset($_POST["precio"])?$_POST["precio"]:"";
-    $stock = isset($_POST["stock"])?$_POST["stock"]:"";
-    require_once "../servidor/funcionesValidacionCachimbas.php";
-    $errores["marca"] = validarmarca($marca);
-    $errores["modelo"] = validarmodelo($modelo);
-    $errores["color"] = validarcolor($color);
-    $errores["precio"] = validarprecio($precio);
-    $errores["stock"] = validarstock($stock);
+    $nombre = isset($_POST["nombre"])?$_POST["nombre"]:"";
+    $apellidos = isset($_POST["apellidos"])?$_POST["apellidos"]:"";
+    $password = isset($_POST["password"])?$_POST["password"]:"";
+    $email = isset($_POST["email"])?$_POST["email"]:"";
+    require_once "../servidor/funcionesValidacionUsuarios.php";
+    $errores["nombre"] = validarnombre($nombre);
+    $errores["apellidos"] = validarapellidos($apellidos);
+    $errores["password"] = validarpassword($password);
+    $errores["email"] = validaremail($email);
 
 
-    if(count($errores["marca"]) === 0 && count($errores["modelo"]) === 0 && count($errores["color"]) === 0 && count($errores["precio"]) === 0 && count($errores["stock"]) === 0){
+    if(count($errores["nombre"]) === 0 && count($errores["apellidos"]) === 0 && count($errores["password"]) === 0 && count($errores["email"]) === 0 ){
         $mostrarFormulario = false;
         
         ?>
     <h1>DATOS DEL FORMULARIO</h1>
-    Se ha creado correctamente la cachimba
+    Se ha creado correctamente el usuario
 
     <?php
     }
@@ -125,13 +97,13 @@ if($mostrarFormulario){
         <form id="formulario" method="POST" action="" onsubmit="validarFormulario()">
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="marca">Marca *</label>
-                    <input id="marca" class="form-control" value="<?php echo $marca?>" name="marca"
-                        onchange="validarmarca()" />
+                    <label for="nombre">Nombre *</label>
+                    <input id="nombre" class="form-control" value="<?php echo $nombre?>" name="nombre"
+                        onchange="validarnombre()" />
                     <div class="error bg-danger">
                         <?php
-                            if(isset($errores["marca"]) && count($errores["marca"]) > 0){
-                                foreach($errores["marca"] as $error){
+                            if(isset($errores["nombre"]) && count($errores["nombre"]) > 0){
+                                foreach($errores["nombre"] as $error){
                                     echo "<div>".$error."</div>";
                                 }
                             }
@@ -141,29 +113,13 @@ if($mostrarFormulario){
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="modelo">Modelo *</label>
-                    <input id="modelo" class="form-control" value="<?php echo $modelo?>" name="modelo"
-                        onchange="validarmodelo()" />
+                    <label for="apellidos">Apellidos *</label>
+                    <input id="apellidos" class="form-control" value="<?php echo $apellidos?>" name="apellidos"
+                        onchange="validarapellidos()" />
                     <div class="error bg-danger">
                         <?php
-                        if(isset($errores["modelo"]) && count($errores["modelo"]) > 0){
-                            foreach($errores["modelo"] as $error){
-                                echo "<div>".$error."</div>";
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-6">
-                    <label for="color">Color *</label>
-                    <input id="color" class="form-control" value="<?php echo $color?>" name="color"
-                        onchange="validarcolor()" />
-                    <div class="error bg-danger">
-                        <?php
-                        if(isset($errores["color"]) && count($errores["color"]) > 0){
-                            foreach($errores["color"] as $error){
+                        if(isset($errores["apellidos"]) && count($errores["apellidos"]) > 0){
+                            foreach($errores["apellidos"] as $error){
                                 echo "<div>".$error."</div>";
                             }
                         }
@@ -174,14 +130,13 @@ if($mostrarFormulario){
 
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="precio">Precio *</label>
-                    <input id="precio" class="form-control" value="<?php echo $precio?>" name="precio"
-                        onchange="validarprecio()" />
-
+                    <label for="email">Email *</label>
+                    <input id="email" class="form-control" value="<?php echo $email?>" name="email"
+                        onchange="validaremail()" />
                     <div class="error bg-danger">
                         <?php
-                        if(isset($errores["precio"]) && count($errores["precio"]) > 0){
-                            foreach($errores["precio"] as $error){
+                        if(isset($errores["email"]) && count($errores["email"]) > 0){
+                            foreach($errores["email"] as $error){
                                 echo "<div>".$error."</div>";
                             }
                         }
@@ -189,18 +144,17 @@ if($mostrarFormulario){
                     </div>
                 </div>
             </div>
-
             <div class="form-row">
                 <div class="form-group col-6">
-                     <label for="stock">Stock *</label>
-                    <input id="stock" class="form-control" value="<?php echo $stock?>" name="stock"
-                        onchange="validarstock()" />
-
-
+                    <label for="password">Password *</label><br>
+                    (La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+NO puede tener otros símbolos.)
+                    <input id="password" class="form-control" value="<?php echo $password?>" name="password"
+                        onchange="validarpassword()" />
                     <div class="error bg-danger">
                         <?php
-                        if(isset($errores["stock"]) && count($errores["stock"]) > 0){
-                            foreach($errores["stock"] as $error){
+                        if(isset($errores["password"]) && count($errores["password"]) > 0){
+                            foreach($errores["password"] as $error){
                                 echo "<div>".$error."</div>";
                             }
                         }
@@ -230,6 +184,14 @@ if($mostrarFormulario){
         </div>
     </div>
     <?php } ?>
+
+
+
+
+
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
