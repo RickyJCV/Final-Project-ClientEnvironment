@@ -42,13 +42,7 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="row col-12">
-            <div class="md-form mt-0">
-                <input class="form-control" type="text" placeholder="Buscar..." aria-label="Search">
-            </div>
-        </div>
-    </div>
+    
 
 
 
@@ -60,23 +54,23 @@
 $mostrarFormulario = true;
 $errores = array();
 $nombre = "";
-$apellidos = "";
+$importe = "";
 $password = "";
-$email = "";
+$id_usuarios = "";
 
 if(count($_POST) > 0){
     $nombre = isset($_POST["nombre"])?$_POST["nombre"]:"";
-    $apellidos = isset($_POST["apellidos"])?$_POST["apellidos"]:"";
+    $importe = isset($_POST["importe"])?$_POST["importe"]:"";
     $password = isset($_POST["password"])?$_POST["password"]:"";
-    $email = isset($_POST["email"])?$_POST["email"]:"";
-    require_once "../servidor/funcionesValidacionUsuarios.php";
+    $id_usuarios = isset($_POST["id_usuarios"])?$_POST["id_usuarios"]:"";
+    require_once "../servidor/funcionesValidacionPedido.php";
     $errores["nombre"] = validarnombre($nombre);
-    $errores["apellidos"] = validarapellidos($apellidos);
+    $errores["importe"] = validarimporte($importe);
     $errores["password"] = validarpassword($password);
-    $errores["email"] = validaremail($email);
+    $errores["id_usuarios"] = validaremail($id_usuarios);
 
 
-    if(count($errores["nombre"]) === 0 && count($errores["apellidos"]) === 0 && count($errores["password"]) === 0 && count($errores["email"]) === 0 ){
+    if(count($errores["nombre"]) === 0 && count($errores["importe"]) === 0 && count($errores["password"]) === 0 && count($errores["id_usuarios"]) === 0 ){
         $mostrarFormulario = false;
         
         ?>
@@ -97,13 +91,13 @@ if($mostrarFormulario){
         <form id="formulario" method="POST" action="" onsubmit="validarFormulario()">
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="nombre">Nombre *</label>
-                    <input id="nombre" class="form-control" value="<?php echo $nombre?>" name="nombre"
-                        onchange="validarnombre()" />
+                    <label for="direccion">Dirección *</label>
+                    <input id="direccion" class="form-control" value="<?php echo $direccion?>" name="direccion"
+                        onchange="validarDireccion()" />
                     <div class="error bg-danger">
                         <?php
-                            if(isset($errores["nombre"]) && count($errores["nombre"]) > 0){
-                                foreach($errores["nombre"] as $error){
+                            if(isset($errores["direccion"]) && count($errores["direccion"]) > 0){
+                                foreach($errores["direccion"] as $error){
                                     echo "<div>".$error."</div>";
                                 }
                             }
@@ -111,15 +105,16 @@ if($mostrarFormulario){
                     </div>
                 </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="apellidos">Apellidos *</label>
-                    <input id="apellidos" class="form-control" value="<?php echo $apellidos?>" name="apellidos"
-                        onchange="validarapellidos()" />
+                    <label for="importe">Importe *</label>
+                    <input id="importe" class="form-control" value="<?php echo $importe?>" name="importe"
+                        onchange="validarimporte()" />
                     <div class="error bg-danger">
                         <?php
-                        if(isset($errores["apellidos"]) && count($errores["apellidos"]) > 0){
-                            foreach($errores["apellidos"] as $error){
+                        if(isset($errores["importe"]) && count($errores["importe"]) > 0){
+                            foreach($errores["importe"] as $error){
                                 echo "<div>".$error."</div>";
                             }
                         }
@@ -130,13 +125,13 @@ if($mostrarFormulario){
 
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="email">Email *</label>
-                    <input id="email" class="form-control" value="<?php echo $email?>" name="email"
+                    <label for="id_usuarios">Id_usuario *</label>
+                    <input id="id_usuarios" class="form-control" value="<?php echo $id_usuarios?>" name="id_usuarios"
                         onchange="validaremail()" />
                     <div class="error bg-danger">
                         <?php
-                        if(isset($errores["email"]) && count($errores["email"]) > 0){
-                            foreach($errores["email"] as $error){
+                        if(isset($errores["id_usuarios"]) && count($errores["id_usuarios"]) > 0){
+                            foreach($errores["id_usuarios"] as $error){
                                 echo "<div>".$error."</div>";
                             }
                         }
@@ -144,24 +139,8 @@ if($mostrarFormulario){
                     </div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-6">
-                    <label for="password">Password *</label><br>
-                    (La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
-NO puede tener otros símbolos.)
-                    <input id="password" class="form-control" value="<?php echo $password?>" name="password"
-                        onchange="validarpassword()" />
-                    <div class="error bg-danger">
-                        <?php
-                        if(isset($errores["password"]) && count($errores["password"]) > 0){
-                            foreach($errores["password"] as $error){
-                                echo "<div>".$error."</div>";
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
+
+            
 
             <button class="btn btn-success">Enviar Formulario</button>
 
