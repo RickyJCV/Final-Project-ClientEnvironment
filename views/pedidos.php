@@ -53,24 +53,24 @@
 <?php
 $mostrarFormulario = true;
 $errores = array();
-$nombre = "";
+
 $importe = "";
-$password = "";
+$direccion = "";
 $id_usuarios = "";
 
 if(count($_POST) > 0){
-    $nombre = isset($_POST["nombre"])?$_POST["nombre"]:"";
+    
     $importe = isset($_POST["importe"])?$_POST["importe"]:"";
-    $password = isset($_POST["password"])?$_POST["password"]:"";
+    $password = isset($_POST["direccion"])?$_POST["direccion"]:"";
     $id_usuarios = isset($_POST["id_usuarios"])?$_POST["id_usuarios"]:"";
     require_once "../servidor/funcionesValidacionPedido.php";
-    $errores["nombre"] = validarnombre($nombre);
-    $errores["importe"] = validarimporte($importe);
-    $errores["password"] = validarpassword($password);
-    $errores["id_usuarios"] = validaremail($id_usuarios);
+    
+    $errores["importe"] = validarImporte($importe);
+    $errores["direccion"] = validarDireccion($direccion);
+    $errores["id_usuarios"] = validarId_usuarios($id_usuarios);
 
 
-    if(count($errores["nombre"]) === 0 && count($errores["importe"]) === 0 && count($errores["password"]) === 0 && count($errores["id_usuarios"]) === 0 ){
+    if(count($errores["nombre"]) === 0 && count($errores["importe"]) === 0 && count($errores["direccion"]) === 0 && count($errores["id_usuarios"]) === 0 ){
         $mostrarFormulario = false;
         
         ?>
@@ -163,14 +163,6 @@ if($mostrarFormulario){
         </div>
     </div>
     <?php } ?>
-
-
-
-
-
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

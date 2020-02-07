@@ -8,9 +8,9 @@ function validarDireccion($direccion){
     return $errores;
 }
 
-function validaraPrecio($precio){
+function validaraImporte($importe){
     $errores = array();
-    if(!preg_match("/([0-9.])/", $precio) || empty($precio)) {
+    if(!preg_match("/([0-9.])/", $importe) || empty($importe)) {
     $errores[] = "Introduzca un importe valido";
     }
     return $errores;
