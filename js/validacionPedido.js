@@ -15,32 +15,24 @@ function objetoXHR() {
 
 
 
-function validarmarca() {
-    let inputmarca = $("#marca");
-    incluirSpinner(inputmarca);
+function validarDireccion() {
+    let inputdireccion = $("#direccion");
+    incluirSpinner(inputdireccion);
     let miXHR = objetoXHR();
-    miXHR.open("POST", "../servidor/validarFormularioCachimbas.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionmarca;
+    miXHR.open("POST", "../servidor/validarFormularioPedido.php");
+    miXHR.onreadystatechange = comprobarEstadoPeticiondireccion;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("marca=" + inputmarca.val());
+    miXHR.send("direccion=" + inputdireccion.val());
 }
 
-function validarmodelo() {
-    let inputmodelo = $("#modelo");
-    incluirSpinner(inputmodelo);
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "../servidor/validarFormularioCachimbas.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionmodelo;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("modelo=" + inputmodelo.val());
-}
 
-function validarcolor() {
-    let inputcolor = $("#color");
-    incluirSpinner(inputcolor);
+
+function validarimporte() {
+    let inputimporte = $("#importe");
+    incluirSpinner(inputimporte);
     let miXHR = objetoXHR();
-    miXHR.open("POST", "../servidor/validarFormularioCachimbas.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticioncolor;
+    miXHR.open("POST", "../servidor/validarFormularioPedido.php");
+    miXHR.onreadystatechange = comprobarEstadoPeticionimporte;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     miXHR.send("color=" + inputcolor.val());
 }
@@ -72,7 +64,7 @@ function validarFormulario() {
 
 function validacionFormularioAjax() {
     $("#modal").modal("show");
-    let inputmarca = $("#marca");
+    let inputdireccion = $("#direccion");
     let inputmodelo = $("#modelo");
     let inputcolor = $("#color");
     let inputprecio = $("#precio");
@@ -81,17 +73,17 @@ function validacionFormularioAjax() {
     miXHR.open("POST", "../servidor/validarFormularioCachimbas.php");
     miXHR.onreadystatechange = comprobarEstadoPeticionFormulario;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("marca=" + inputmarca.val() + "&" + "modelo=" + inputmodelo.val() + "&" + "color=" + inputcolor.val() + "&" + "precio=" + inputprecio.val() + "&" + "stock=" + inputstock.val());
+    miXHR.send("direccion=" + inputdireccion.val() + "&" + "modelo=" + inputmodelo.val() + "&" + "color=" + inputcolor.val() + "&" + "precio=" + inputprecio.val() + "&" + "stock=" + inputstock.val());
 
 
 }
 
 
-function comprobarEstadoPeticionmarca() {
+function comprobarEstadoPeticiondireccion() {
     if (this.readyState == 4 && this.status == 200) {
         let errores = JSON.parse(this.responseText);
-        let inputmarca = $("#marca");
-        gestionarErrores(inputmarca, errores.marca);
+        let inputdireccion = $("#direccion");
+        gestionarErrores(inputdireccion, errores.direccion);
     }
 }
 
@@ -130,22 +122,22 @@ function comprobarEstadoPeticionstock() {
 function comprobarEstadoPeticionFormulario() {
     if (this.readyState == 4 && this.status == 200) {
         let errores = JSON.parse(this.responseText);
-        let inputmarca = $("#marca");
+        let inputdireccion = $("#direccion");
         let inputmodelo = $("#modelo");
         let inputcolor = $("#color");
         let inputprecio = $("#precio");
         let inputstock = $("#stock");
-        let hayErroresmarca = gestionarErrores(inputmarca, errores.marca);
+        let hayErroresdireccion = gestionarErrores(inputdireccion, errores.direccion);
         let hayErroresmodelo = gestionarErrores(inputmodelo, errores.modelo);
         let hayErrorescolor = gestionarErrores(inputcolor, errores.color);
         let hayErroresprecio = gestionarErrores(inputprecio, errores.precio);
         let hayErroresstock = gestionarErrores(inputstock, errores.stock);
-        if (!hayErroresmarca && !hayErroresmodelo && !hayErrorescolor && !hayErroresprecio && !hayErroresstock) {
+        if (!hayErroresdireccion && !hayErroresmodelo && !hayErrorescolor && !hayErroresprecio && !hayErroresstock) {
 
             let miXHR = objetoXHR();
             miXHR.open("POST", "../servidor/insertarCachimba.php");
             miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            miXHR.send("marca=" + inputmarca.val() + "&" + "modelo=" + inputmodelo.val() + "&" + "color=" + inputcolor.val() + "&" + "precio=" + inputprecio.val() + "&" + "stock=" + inputstock.val());
+            miXHR.send("direccion=" + inputdireccion.val() + "&" + "modelo=" + inputmodelo.val() + "&" + "color=" + inputcolor.val() + "&" + "precio=" + inputprecio.val() + "&" + "stock=" + inputstock.val());
             let formulario = $("#formulario");
             formulario.submit();
         }

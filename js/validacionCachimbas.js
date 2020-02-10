@@ -17,6 +17,7 @@ function objetoXHR() {
 
 function validarmarca() {
     let inputmarca = $("#marca");
+    // $("#marca").addClass("spinner-border");
     incluirSpinner(inputmarca);
     let miXHR = objetoXHR();
     miXHR.open("POST", "../servidor/validarFormularioCachimbas.php");

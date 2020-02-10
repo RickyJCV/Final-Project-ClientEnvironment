@@ -127,7 +127,7 @@ if($mostrarFormulario){
                 <div class="form-group col-6">
                     <label for="id_usuarios">Id_usuario *</label>
                     <input id="id_usuarios" class="form-control" value="<?php echo $id_usuarios?>" name="id_usuarios"
-                        onchange="validaremail()" />
+                        onchange="validar_id_usuario()" />
                     <div class="error bg-danger">
                         <?php
                         if(isset($errores["id_usuarios"]) && count($errores["id_usuarios"]) > 0){
