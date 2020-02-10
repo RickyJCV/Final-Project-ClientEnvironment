@@ -13,11 +13,11 @@ if(isset($_POST["direccion"])){
 }
 
 if(isset($_POST["importe"])){
-    $errores["importe"] = validarapellidos(trim($_POST["importe"]));
+    $errores["importe"] = validarimporte(trim($_POST["importe"]));
 }
 
 if(isset($_POST["id_usuarios"])){
-    $errores["id_usuarios"] = validaremail(trim($_POST["id_usuarios"]));
+    $errores["id_usuarios"] = validarid_usuarios(trim($_POST["id_usuarios"]));
 }
 
 echo json_encode($errores);
