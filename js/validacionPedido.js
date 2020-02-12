@@ -124,7 +124,10 @@ function comprobarEstadoPeticionFormulario() {
             miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             miXHR.send("direccion=" + inputdireccion.val() + "&" + "importe=" + inputimporte.val() + "&" + "id_usuarios=" + inputid_usuarios.val() + "&" + "cachimba=" + inputid_cachimba.val());
             let resultado = $(".resultado");
+            let alerta = $("#alerta");
+            alerta.removeClass("invisible");
             resultado.append("<h4>Se ha creado correctamente</h4>");
+
 
             $("#formulario")[0].reset();
         }

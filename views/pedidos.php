@@ -44,7 +44,13 @@
             </ul>
         </div>
     </nav>
-
+    <div class="alert alert-warning alert-dismissible fade show sticky-top invisible" id="alerta" role="alert">
+        <strong>Cachimba creada con exito</strong>
+        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <!-- FORMULARIO VALIDACION XHR -->
 
     <?php
@@ -211,6 +217,8 @@ if($mostrarFormulario){
         </div>
     </div>
     <?php } ?>
+
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
