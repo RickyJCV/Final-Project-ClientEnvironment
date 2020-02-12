@@ -7,7 +7,7 @@ function objetoXHR() {
         for (var i = 0; i < versionesIE.length; i++) {
             try {
                 return new ActiveXObject(versionesIE[i]);
-            } catch (errorControlado) {}
+            } catch (errorControlado) { }
         }
     }
     throw new Error("No se pudo crear el objeto XMLHTTPRequest");
@@ -58,6 +58,7 @@ function validar_id_usuarios() {
 function validarFormulario() {
     event.preventDefault();
     validacionFormularioAjax();
+
 }
 
 function validacionFormularioAjax() {
@@ -112,6 +113,7 @@ function comprobarEstadoPeticionFormulario() {
         let inputdireccion = $("#direccion");
         let inputimporte = $("#importe");
         let inputid_usuarios = $("#id_usuarios");
+        let inputid_cachimba = $("#cachimba");
         let hayErroresdireccion = gestionarErrores(inputdireccion, errores.direccion);
         let hayErroresimporte = gestionarErrores(inputimporte, errores.importe);
         let hayErroresid_usuarios = gestionarErrores(inputid_usuarios, errores.id_usuarios);
@@ -120,9 +122,11 @@ function comprobarEstadoPeticionFormulario() {
             let miXHR = objetoXHR();
             miXHR.open("POST", "../servidor/insertarPedido.php");
             miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            miXHR.send("direccion=" + inputdireccion.val() + "&" + "modelo=" + inputmodelo.val() + "&" + "color=" + inputcolor.val() + "&" + "id_usuarios=" + inputid_usuarios.val() + "&" + "stock=" + inputstock.val());
-            let formulario = $("#formulario");
-            formulario.submit();
+            miXHR.send("direccion=" + inputdireccion.val() + "&" + "importe=" + inputimporte.val() + "&" + "id_usuarios=" + inputid_usuarios.val() + "&" + "cachimba=" + inputid_cachimba.val());
+            let resultado = $(".resultado");
+            resultado.append("<h4>Se ha creado correctamente</h4>");
+
+            $("#formulario")[0].reset();
         }
         $("#modal").modal("hide");
     }
@@ -131,8 +135,6 @@ function comprobarEstadoPeticionFormulario() {
 function gestionarErrores(input, errores) {
     var hayErrores = false;
     let divErrores = input.parent().next();
-
-    console.log(input.parent().next())
     divErrores.html("");
     input.removeClass("bg-success bg-danger");
     if (errores.length === 0) {

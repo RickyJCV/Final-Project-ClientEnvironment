@@ -2,6 +2,7 @@
 <html lang="es">
 
 
+
 <head>
     <title>Entorno Cliente</title>
     <!-- Required meta tags -->
@@ -44,12 +45,7 @@
         </div>
     </nav>
 
-
-
-
-
     <!-- FORMULARIO VALIDACION XHR -->
-
 
     <?php
 $mostrarFormulario = true;
@@ -57,21 +53,23 @@ $errores = array();
 
 $importe = "";
 $direccion = "";
-$id_usuarios = "";
+$usuarios = "";
+$cachimba = "";
 
 if(count($_POST) > 0){
     
     $importe = isset($_POST["importe"])?$_POST["importe"]:"";
     $direccion = isset($_POST["direccion"])?$_POST["direccion"]:"";
-    $id_usuarios = isset($_POST["id_usuarios"])?$_POST["id_usuarios"]:"";
+    $usuarios = isset($_POST["id_usuarios"])?$_POST["id_usuarios"]:"";
+    $cachimba = isset($_POST["id_cachimba"])?$_POST["id_cachimba"]:"";
     require_once "../servidor/funcionesValidacionPedido.php";
     
     $errores["importe"] = validarimporte($importe);
     $errores["direccion"] = validardireccion($direccion);
-    $errores["id_usuarios"] = validarid_usuarios($id_usuarios);
+    $errores["id_usuarios"] = validarid_usuarios($usuarios);
 
 
-    if(count($errores["nombre"]) === 0 && count($errores["importe"]) === 0 && count($errores["direccion"]) === 0 && count($errores["id_usuarios"]) === 0 ){
+    if(count($errores["importe"]) === 0 && count($errores["direccion"]) === 0 && count($errores["id_usuarios"]) === 0 ){
         $mostrarFormulario = false;
         
         ?>
@@ -139,15 +137,15 @@ if($mostrarFormulario){
 
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label for="id_usuarios">Id_usuario *</label>
+                    <label for="id_usuarios">Usuario *</label>
                     <div class="input-group">
-                        <select id="id_usuarios" class="form-control" value="<?php echo $id_usuarios?>"
-                            name="id_usuarios" onchange="validar_id_usuarios()">
+                        <?php require_once "../servidor/select_id_usuario.php" ?>
+                        <select id="id_usuarios" class="form-control" name="id_usuarios" onchange="validar_id_usuarios()">
                             <?php
                             foreach($id_usuarios as $id_usuario)
                             {
                             ?>
-                            <option value=" <?php $id_usuario ?>"><?php $id_usuario?></option>
+                            <option value="<?php echo $id_usuario["id"] ?>"><?php echo $id_usuario["nombre"]?> <?php echo $id_usuario["apellidos"] ?></option>
 
                             <?php } ?>
                         </select>
@@ -168,11 +166,33 @@ if($mostrarFormulario){
                 </div>
             </div>
 
+               <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="id_usuarios">Modelo *</label>
+                    <div class="input-group">
+                        <?php require_once "../servidor/select_cachimba.php" ?>
+                        <select id="cachimba" class="form-control" name="cachimba">
+                            <?php
+                            foreach($cachimbas as $cachimba)
+                            {
+                            ?>
+                            <option value="<?php echo $cachimba["id"] ?>"><?php echo $cachimba["marca"]?> <?php echo $cachimba["modelo"] ?></option>
+
+                            <?php } ?>
+                        </select>
+                        
+                    </div>
+
+                </div>
+            </div>
+
 
 
             <button class="btn btn-success">Enviar Formulario</button>
+            <div class="resultado"></div>
 
         </form>
+
     </div>
 
     <div class="modal fade" id="modal" data-backdrop="static">
