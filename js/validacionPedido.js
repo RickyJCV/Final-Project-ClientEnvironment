@@ -124,8 +124,15 @@ function comprobarEstadoPeticionFormulario() {
             miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             miXHR.send("direccion=" + inputdireccion.val() + "&" + "importe=" + inputimporte.val() + "&" + "id_usuarios=" + inputid_usuarios.val() + "&" + "cachimba=" + inputid_cachimba.val());
             let alerta = $("#alerta");
+            let errorImporte = $("#importe");
+            let errorDireccion = $("#direccion");
+            let erroresUs = $("#id_usuarios");
             alerta.removeClass("invisible");
+            errorImporte.removeClass("bg-success");
+            errorDireccion.removeClass("bg-success");
+            erroresUs.removeClass("bg-success");
             $("#formulario")[0].reset();
+
         }
         $("#modal").modal("hide");
     }

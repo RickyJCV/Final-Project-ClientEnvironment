@@ -44,6 +44,7 @@
             </ul>
         </div>
     </nav>
+    
     <div class="alert alert-warning alert-dismissible fade show sticky-top invisible" id="alerta" role="alert">
         <strong>Cachimba creada con exito</strong>
         
