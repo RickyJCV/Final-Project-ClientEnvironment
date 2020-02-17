@@ -21,7 +21,7 @@
 
     <!-- Barra de navegacion -->
     <nav class="col-12 navbar navbar-expand-lg align-items-end bg-dark">
-        <a class="navbar-brand" href="#">TIENDA CACHIMBAS</a>
+        <a class="navbar-brand" href="../index.html">TIENDA CACHIMBAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icono-desplegable"><i class="fas fa-bars"></i></span>
@@ -53,10 +53,10 @@
 
 
 
-<!-- FORMULARIO VALIDACION XHR -->
+    <!-- FORMULARIO VALIDACION XHR -->
 
 
-<?php
+    <?php
 $mostrarFormulario = true;
 $errores = array();
 $nombre = "";
@@ -98,8 +98,13 @@ if($mostrarFormulario){
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="nombre">Nombre *</label>
-                    <input id="nombre" class="form-control" value="<?php echo $nombre?>" name="nombre"
-                        onchange="validarnombre()" />
+                    <div class="input-group">
+                        <input id="nombre" class="form-control" value="<?php echo $nombre?>" name="nombre"
+                            onchange="validarnombre()" />
+                        <div id="loading" class="spinner-border text-primary invisible" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     <div class="error bg-danger">
                         <?php
                             if(isset($errores["nombre"]) && count($errores["nombre"]) > 0){
@@ -114,8 +119,13 @@ if($mostrarFormulario){
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="apellidos">Apellidos *</label>
-                    <input id="apellidos" class="form-control" value="<?php echo $apellidos?>" name="apellidos"
-                        onchange="validarapellidos()" />
+                    <div class="input-group">
+                        <input id="apellidos" class="form-control" value="<?php echo $apellidos?>" name="apellidos"
+                            onchange="validarapellidos()" />
+                        <div id="loading2" class="spinner-border text-primary invisible" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     <div class="error bg-danger">
                         <?php
                         if(isset($errores["apellidos"]) && count($errores["apellidos"]) > 0){
@@ -131,8 +141,13 @@ if($mostrarFormulario){
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="email">Email *</label>
-                    <input id="email" class="form-control" value="<?php echo $email?>" name="email"
-                        onchange="validaremail()" />
+                    <div class="input-group">
+                        <input id="email" class="form-control" value="<?php echo $email?>" name="email"
+                            onchange="validaremail()" />
+                        <div id="loading3" class="spinner-border text-primary invisible" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     <div class="error bg-danger">
                         <?php
                         if(isset($errores["email"]) && count($errores["email"]) > 0){
@@ -147,10 +162,16 @@ if($mostrarFormulario){
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="password">Password *</label><br>
-                    (La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
-NO puede tener otros símbolos.)
-                    <input id="password" class="form-control" value="<?php echo $password?>" name="password"
-                        onchange="validarpassword()" />
+                    (La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y
+                    al menos una mayúscula.
+                    NO puede tener otros símbolos.)
+                    <div class="input-group">
+                        <input id="password" class="form-control" value="<?php echo $password?>" name="password"
+                            onchange="validarpassword()" />
+                        <div id="loading4" class="spinner-border text-primary invisible" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     <div class="error bg-danger">
                         <?php
                         if(isset($errores["password"]) && count($errores["password"]) > 0){
@@ -196,14 +217,14 @@ NO puede tener otros símbolos.)
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

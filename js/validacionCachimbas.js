@@ -7,7 +7,7 @@ function objetoXHR() {
         for (var i = 0; i < versionesIE.length; i++) {
             try {
                 return new ActiveXObject(versionesIE[i]);
-            } catch (errorControlado) { }
+            } catch (errorControlado) {}
         }
     }
     throw new Error("No se pudo crear el objeto XMLHTTPRequest");
@@ -17,7 +17,7 @@ function objetoXHR() {
 
 function validarmarca() {
     let inputmarca = $("#marca");
-    // $("#marca").addClass("spinner-border");
+    // $("#precio").addClass("spinner-border");
     incluirSpinner(inputmarca);
     let miXHR = objetoXHR();
     miXHR.open("POST", "../servidor/validarFormularioCachimbas.php");
@@ -178,4 +178,78 @@ function incluirSpinner(input) {
         input.parent().after(spin);
         spin.show();
     }
+}
+
+function validarprecio2() {
+    let precioInput = $("#precio").val();
+    let Input = $("#precio");
+    $("#loadingprecio").removeClass("invisible");
+    let form = new FormData();
+    form.append("precio", precioInput);
+
+    fetch("../servidor/validarFormularioCachimbas.php", {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
+
+            return response.json()
+
+        })
+        .then(function(response) {
+
+            gestionarErrores(Input, response.precio)
+
+        })
+        .catch(function(err) {
+            console.log(err);
+            alert("errorrrrr");
+        }).finally(function() {
+            $("#loadingprecio").addClass("invisible");
+
+        });
+}
+
+
+function validarFormulario2(event) {
+    event.preventDefault();
+    let precioInput = $("#precio").val();
+    let Input = $("#precio");
+    let modelo = $("#modelo").val()
+    $("#loadingprecio").removeClass("invisible");
+    let form = new FormData();
+    form.append("precio", precioInput);
+    fetch("../servidor/validarFormularioCachimbas.php", {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
+            return response.json()
+
+        })
+        .then(function(response) {
+            if (gestionarErrores(Input, response.precio) === false) {
+                let form2 = new FormData();
+
+                form2.append("modelo", modelo);
+                form2.append("precio", precioInput);
+                fetch("../servidor/editarCachimbasPrecio.php", {
+                        method: 'post',
+                        body: form2
+                    }).then(function() {
+                        alert("ya esta insertado");
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                        alert("errror 2 fetch");
+                    })
+            }
+
+        })
+        .catch(function(err) {
+            console.log(err);
+            alert("errorrr 3");
+        }).finally(function() {
+            $("#loadingprecio").addClass("invisible");
+        });
 }

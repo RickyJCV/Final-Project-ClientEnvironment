@@ -17,6 +17,8 @@ function objetoXHR() {
 
 function validarnombre() {
     let inputnombre = $("#nombre");
+    let loading = $("#loading");
+    loading.removeClass("invisible");
     incluirSpinner(inputnombre);
     let miXHR = objetoXHR();
     miXHR.open("POST", "../servidor/validarFormularioUsuarios.php");
@@ -27,6 +29,8 @@ function validarnombre() {
 
 function validarapellidos() {
     let inputapellidos = $("#apellidos");
+    let loading = $("#loading2");
+    loading.removeClass("invisible");
     incluirSpinner(inputapellidos);
     let miXHR = objetoXHR();
     miXHR.open("POST", "../servidor/validarFormularioUsuarios.php");
@@ -37,6 +41,8 @@ function validarapellidos() {
 
 function validaremail() {
     let inputemail = $("#email");
+    let loading = $("#loading3");
+    loading.removeClass("invisible");
     incluirSpinner(inputemail);
     let miXHR = objetoXHR();
     miXHR.open("POST", "../servidor/validarFormularioUsuarios.php");
@@ -47,6 +53,8 @@ function validaremail() {
 
 function validarpassword() {
     let inputpassword = $("#password");
+    let loading = $("#loading4");
+    loading.removeClass("invisible");
     incluirSpinner(inputpassword);
     let miXHR = objetoXHR();
     miXHR.open("POST", "../servidor/validarFormularioUsuarios.php");
@@ -82,6 +90,8 @@ function comprobarEstadoPeticionnombre() {
         let errores = JSON.parse(this.responseText);
         let inputnombre = $("#nombre");
         gestionarErrores(inputnombre, errores.nombre);
+        let loading = $("#loading");
+        loading.addClass("invisible");
     }
 }
 
@@ -90,6 +100,8 @@ function comprobarEstadoPeticionapellidos() {
         let errores = JSON.parse(this.responseText);
         let input = $("#apellidos");
         gestionarErrores(input, errores.apellidos);
+        let loading = $("#loading2");
+        loading.addClass("invisible");
     }
 }
 
@@ -98,6 +110,8 @@ function comprobarEstadoPeticionemail() {
         let errores = JSON.parse(this.responseText);
         let inputemail = $("#email");
         gestionarErrores(inputemail, errores.email);
+        let loading = $("#loading3");
+        loading.addClass("invisible");
     }
 }
 
@@ -106,6 +120,8 @@ function comprobarEstadoPeticionpassword() {
         let errores = JSON.parse(this.responseText);
         let input = $("#password");
         gestionarErrores(input, errores.password);
+        let loading = $("#loading4");
+        loading.addClass("invisible");
     }
 }
 

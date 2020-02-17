@@ -23,7 +23,7 @@
 
     <!-- Barra de navegacion -->
     <nav class="col-12 navbar navbar-expand-lg align-items-end bg-dark">
-        <a class="navbar-brand" href="#">TIENDA CACHIMBAS</a>
+        <a class="navbar-brand" href="../index.html">TIENDA CACHIMBAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icono-desplegable"><i class="fas fa-bars"></i></span>
@@ -44,10 +44,10 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="alert alert-warning alert-dismissible fade show sticky-top invisible" id="alerta" role="alert">
         <strong>Cachimba creada con exito</strong>
-        
+
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -147,12 +147,14 @@ if($mostrarFormulario){
                     <label for="id_usuarios">Usuario *</label>
                     <div class="input-group">
                         <?php require_once "../servidor/select_id_usuario.php" ?>
-                        <select id="id_usuarios" class="form-control" name="id_usuarios" onchange="validar_id_usuarios()">
+                        <select id="id_usuarios" class="form-control" name="id_usuarios"
+                            onchange="validar_id_usuarios()">
                             <?php
                             foreach($id_usuarios as $id_usuario)
                             {
                             ?>
-                            <option value="<?php echo $id_usuario["id"] ?>"><?php echo $id_usuario["nombre"]?> <?php echo $id_usuario["apellidos"] ?></option>
+                            <option value="<?php echo $id_usuario["id"] ?>"><?php echo $id_usuario["nombre"]?>
+                                <?php echo $id_usuario["apellidos"] ?></option>
 
                             <?php } ?>
                         </select>
@@ -173,7 +175,7 @@ if($mostrarFormulario){
                 </div>
             </div>
 
-               <div class="form-row">
+            <div class="form-row">
                 <div class="form-group col-6">
                     <label for="id_usuarios">Modelo *</label>
                     <div class="input-group">
@@ -183,11 +185,12 @@ if($mostrarFormulario){
                             foreach($cachimbas as $cachimba)
                             {
                             ?>
-                            <option value="<?php echo $cachimba["id"] ?>"><?php echo $cachimba["marca"]?> <?php echo $cachimba["modelo"] ?></option>
+                            <option value="<?php echo $cachimba["id"] ?>"><?php echo $cachimba["marca"]?>
+                                <?php echo $cachimba["modelo"] ?></option>
 
                             <?php } ?>
                         </select>
-                        
+
                     </div>
 
                 </div>
@@ -219,7 +222,7 @@ if($mostrarFormulario){
     </div>
     <?php } ?>
 
- 
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
