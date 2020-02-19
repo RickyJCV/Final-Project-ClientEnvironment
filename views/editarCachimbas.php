@@ -54,12 +54,9 @@
                     <div class="input-group">
                         <input type="text" id="precio" onchange="validarprecio2()">
 
-                        <div class="error bg-danger"></div>
-                        <br>
-                        <div id="loadingprecio" class="spinner-border text-primary invisible" role="status">
+                         <div id="loadingprecio" class="spinner-border text-primary invisible" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
-                        <button class="btn btn-success">Actualizar</button>
 
                     </div>
 
@@ -74,7 +71,7 @@
                     </div>
                 </div>
             </div>
-
+            <button class="btn btn-success">Actualizar</button>
         </form>
     </div>
 
