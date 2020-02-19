@@ -7,7 +7,7 @@ function objetoXHR() {
         for (var i = 0; i < versionesIE.length; i++) {
             try {
                 return new ActiveXObject(versionesIE[i]);
-            } catch (errorControlado) {}
+            } catch (errorControlado) { }
         }
     }
     throw new Error("No se pudo crear el objeto XMLHTTPRequest");
@@ -188,23 +188,23 @@ function validarprecio2() {
     form.append("precio", precioInput);
 
     fetch("../servidor/validarFormularioCachimbas.php", {
-            method: 'post',
-            body: form
-        })
-        .then(function(response) {
+        method: 'post',
+        body: form
+    })
+        .then(function (response) {
 
             return response.json()
 
         })
-        .then(function(response) {
+        .then(function (response) {
 
             gestionarErrores(Input, response.precio)
 
         })
-        .catch(function(err) {
+        .catch(function (err) {
             console.log(err);
             alert("errorrrrr");
-        }).finally(function() {
+        }).finally(function () {
             $("#loadingprecio").addClass("invisible");
 
         });
@@ -220,36 +220,35 @@ function validarFormulario2(event) {
     let form = new FormData();
     form.append("precio", precioInput);
     fetch("../servidor/validarFormularioCachimbas.php", {
-            method: 'post',
-            body: form
-        })
-        .then(function(response) {
+        method: 'post',
+        body: form
+    })
+        .then(function (response) {
             return response.json()
 
         })
-        .then(function(response) {
+        .then(function (response) {
             if (gestionarErrores(Input, response.precio) === false) {
                 let form2 = new FormData();
 
                 form2.append("modelo", modelo);
                 form2.append("precio", precioInput);
                 fetch("../servidor/editarCachimbasPrecio.php", {
-                        method: 'post',
-                        body: form2
-                    }).then(function() {
-                        alert("ya esta insertado");
-                    })
-                    .catch(function(err) {
+                    method: 'post',
+                    body: form2
+                }).then(function () {
+                    alert("ya esta insertado");
+                })
+                    .catch(function (err) {
                         console.log(err);
-                        alert("errror 2 fetch");
+
                     })
             }
 
         })
-        .catch(function(err) {
+        .catch(function (err) {
             console.log(err);
-            alert("errorrr 3");
-        }).finally(function() {
+        }).finally(function () {
             $("#loadingprecio").addClass("invisible");
         });
 }
