@@ -179,6 +179,8 @@ function incluirSpinner(input) {
         spin.show();
     }
 }
+/* Validacion de Editar Cachimba con peticiones por FETCH */
+
 
 function validarprecio2() {
     let precioInput = $("#precio").val();
@@ -203,7 +205,7 @@ function validarprecio2() {
         })
         .catch(function (err) {
             console.log(err);
-            alert("errorrrrr");
+
         }).finally(function () {
             $("#loadingprecio").addClass("invisible");
 
@@ -237,6 +239,7 @@ function validarFormulario2(event) {
                     method: 'post',
                     body: form2
                 }).then(function () {
+
                     alert("ya esta insertado");
                 })
                     .catch(function (err) {

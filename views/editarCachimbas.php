@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    
 
     <div class="container-fluid">
         <form id="formulario" method="POST" action="" onsubmit="validarFormulario2(event)">
@@ -52,14 +53,16 @@
                 <div class="form-group col-6">
                     <label for="precio">Indique Precio nuevo</label>
                     <div class="input-group">
-                        <input type="text" id="precio" onchange="validarprecio2()">
+                        <input type="text" id="precio" onchange="validarprecio2()" />
 
-                         <div id="loadingprecio" class="spinner-border text-primary invisible" role="status">
+                        
+                            <div id="loadingprecio" class="spinner-border text-primary invisible" role="status">
                             <span class="sr-only">Loading...</span>
-                        </div>
+                            </div>
+                        
 
                     </div>
-
+                    
                     <div class="error bg-danger">
                         <?php
                         if(isset($errores["precio"]) && count($errores["precio"]) > 0){
@@ -69,6 +72,7 @@
                         }
                         ?>
                     </div>
+                     
                 </div>
             </div>
             <button class="btn btn-success">Actualizar</button>
