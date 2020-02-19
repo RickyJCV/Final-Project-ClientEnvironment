@@ -7,7 +7,7 @@ function objetoXHR() {
         for (var i = 0; i < versionesIE.length; i++) {
             try {
                 return new ActiveXObject(versionesIE[i]);
-            } catch (errorControlado) { }
+            } catch (errorControlado) {}
         }
     }
     throw new Error("No se pudo crear el objeto XMLHTTPRequest");
@@ -156,7 +156,7 @@ function comprobarEstadoPeticionFormulario() {
 
 function gestionarErrores(input, errores) {
     var hayErrores = false;
-    let divErrores = input.next();
+    let divErrores = input.parent().next();
     divErrores.html("");
     input.removeClass("bg-success bg-danger");
     if (errores.length === 0) {
@@ -168,9 +168,9 @@ function gestionarErrores(input, errores) {
             divErrores.append("<div>" + error + "</div>");
         }
     }
-    input.parent().next().remove();
     return hayErrores;
 }
+
 
 function incluirSpinner(input) {
     if (input.parent().next().length === 0) {
@@ -185,29 +185,29 @@ function incluirSpinner(input) {
 function validarprecio2() {
     let precioInput = $("#precio").val();
     let Input = $("#precio");
-    $("#loadingprecio").removeClass("invisible");
+    $("#loadingprecionuevo").removeClass("invisible");
     let form = new FormData();
     form.append("precio", precioInput);
 
     fetch("../servidor/validarFormularioCachimbas.php", {
-        method: 'post',
-        body: form
-    })
-        .then(function (response) {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
 
             return response.json()
 
         })
-        .then(function (response) {
+        .then(function(response) {
 
             gestionarErrores(Input, response.precio)
 
         })
-        .catch(function (err) {
+        .catch(function(err) {
             console.log(err);
 
-        }).finally(function () {
-            $("#loadingprecio").addClass("invisible");
+        }).finally(function() {
+            $("#loadingprecionuevo").addClass("invisible");
 
         });
 }
@@ -222,36 +222,36 @@ function validarFormulario2(event) {
     let form = new FormData();
     form.append("precio", precioInput);
     fetch("../servidor/validarFormularioCachimbas.php", {
-        method: 'post',
-        body: form
-    })
-        .then(function (response) {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
             return response.json()
 
         })
-        .then(function (response) {
+        .then(function(response) {
             if (gestionarErrores(Input, response.precio) === false) {
                 let form2 = new FormData();
 
                 form2.append("modelo", modelo);
                 form2.append("precio", precioInput);
                 fetch("../servidor/editarCachimbasPrecio.php", {
-                    method: 'post',
-                    body: form2
-                }).then(function () {
+                        method: 'post',
+                        body: form2
+                    }).then(function() {
 
-                    alert("ya esta insertado");
-                })
-                    .catch(function (err) {
+                        alert("ya esta insertado");
+                    })
+                    .catch(function(err) {
                         console.log(err);
 
                     })
             }
 
         })
-        .catch(function (err) {
+        .catch(function(err) {
             console.log(err);
-        }).finally(function () {
-            $("#loadingprecio").addClass("invisible");
+        }).finally(function() {
+            $("#loadingprecionuevo").addClass("invisible");
         });
 }

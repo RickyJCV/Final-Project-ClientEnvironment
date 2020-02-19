@@ -3,7 +3,7 @@
 
 <head lang="es">
     <meta charset="UTF-8">
-    <title>EDITAR PRECIO CACHIMBA</title>
+    <title>EDITAR EMAIL USUARIOS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Incluimos librería Bootstrap css-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
@@ -19,7 +19,7 @@
         integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../js/validacionCachimbas.js" defer></script>
+    <script src="../js/validacionUsuarios.js" defer></script>
     <link rel="stylesheet" href="../css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -34,15 +34,15 @@
 
             <div class="form-row ml-3">
                 <div class="form-group col-6">
-                    <label for="modelo">Seleccion modelo</label>
+                    <label for="usuario">Seleccion usuario</label>
                     <div class="input-group">
-                        <?php require_once "../servidor/select_id_cachimba.php" ?>
-                        <select id="modelo" class="form-control" name="modelo">
+                        <?php require_once "../servidor/select_id_usuario.php" ?>
+                        <select id="usuario" class="form-control" name="usuario">
                             <?php
-                            foreach($modelo as $cachimba)
+                            foreach($id_usuarios as $usuario)
                             {
                             ?>
-                            <option value="<?php echo $cachimba["modelo"] ?>"><?php echo $cachimba["modelo"]?>
+                            <option value="<?php echo $usuario["id"] ?>"><?php echo $usuario["nombre"]?>
                             </option>
 
                             <?php } ?>
@@ -54,11 +54,11 @@
 
             <div class="form-row ml-3">
                 <div class="form-group col-6">
-                    <label for="precio">Indique Precio nuevo</label>
+                    <label for="email">Indique el Email nuevo:</label>
                     <div class="input-group">
-                        <input type="text" id="precio" onchange="validarprecio2()" />
+                        <input type="text" id="email" onchange="validaremail2()" />
  
-                        <div id="loadingprecionuevo" class="spinner-border text-primary invisible" role="status" >
+                        <div id="loadingemailnuevo" class="spinner-border text-primary invisible" role="status" >
                             <span class="sr-only">Loading...</span>
                         </div>
                         
@@ -66,8 +66,8 @@
 
                     <div class="error bg-danger">
                         <?php
-                        if(isset($errores["precio"]) && count($errores["precio"]) > 0){
-                            foreach($errores["precio"] as $error){
+                        if(isset($errores["email"]) && count($errores["email"]) > 0){
+                            foreach($errores["email"] as $error){
                                 echo "<div>".$error."</div>";
                             }
                         }

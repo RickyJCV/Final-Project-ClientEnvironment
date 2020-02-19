@@ -162,3 +162,80 @@ function incluirSpinner(input) {
         spin.show();
     }
 }
+
+/* Validacion de Editar Cachimba con peticiones por FETCH */
+
+
+function validardireccion2() {
+    let direccionInput = $("#direccion").val();
+    let Input = $("#direccion");
+    $("#loadingdireccionnuevo").removeClass("invisible");
+    let form = new FormData();
+    form.append("direccion", direccionInput);
+
+    fetch("../servidor/validarFormularioPedido.php", {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
+
+            return response.json()
+
+        })
+        .then(function(response) {
+
+            gestionarErrores(Input, response.direccion)
+
+        })
+        .catch(function(err) {
+            console.log(err);
+
+        }).finally(function() {
+            $("#loadingdireccionnuevo").addClass("invisible");
+
+        });
+}
+
+
+function validarFormulario2(event) {
+    event.preventDefault();
+    let direccionInput = $("#direccion").val();
+    let Input = $("#direccion");
+    let usuario = $("#usuario").val()
+    $("#loadingdireccionnuevo").removeClass("invisible");
+    let form = new FormData();
+    form.append("direccion", direccionInput);
+    fetch("../servidor/validarFormularioPedido.php", {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
+            return response.json()
+
+        })
+        .then(function(response) {
+            if (gestionarErrores(Input, response.direccion) === false) {
+                let form2 = new FormData();
+
+                form2.append("usuario", usuario);
+                form2.append("direccion", direccionInput);
+                fetch("../servidor/editarPedidosDireccion.php", {
+                        method: 'post',
+                        body: form2
+                    }).then(function() {
+
+                        alert("ya esta insertado");
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+
+                    })
+            }
+
+        })
+        .catch(function(err) {
+            console.log(err);
+        }).finally(function() {
+            $("#loadingdireccionnuevo").addClass("invisible");
+        });
+}

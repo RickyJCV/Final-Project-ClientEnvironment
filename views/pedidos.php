@@ -124,8 +124,10 @@ if($mostrarFormulario){
                 <div class="form-group col-6">
                     <label for="importe">Importe *</label>
                     <div class="input-group">
-                        <input id="importe" class="form-control" value="<?php echo $importe?>" name="importe"
-                            onchange="validarimporte()" />
+                        <input type="text" id="importe" class="form-control" value="<?php echo $importe?>"
+                            name="importe" onchange="validarimporte()"></input>
+
+
                         <div id="loading2" class="spinner-border text-primary invisible" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>

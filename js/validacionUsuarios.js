@@ -164,7 +164,7 @@ function gestionarErrores(input, errores) {
             divErrores.append("<div>" + error + "</div>");
         }
     }
-    input.parent().next().remove();
+    //input.parent().next().remove();
     return hayErrores;
 }
 
@@ -174,4 +174,81 @@ function incluirSpinner(input) {
         input.parent().after(spin);
         spin.show();
     }
+}
+
+/* Validacion de Editar Cachimba con peticiones por FETCH */
+
+
+function validaremail2() {
+    let emailInput = $("#email").val();
+    let Input = $("#email");
+    $("#loadingemailnuevo").removeClass("invisible");
+    let form = new FormData();
+    form.append("email", emailInput);
+
+    fetch("../servidor/validarFormularioUsuarios.php", {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
+
+            return response.json()
+
+        })
+        .then(function(response) {
+
+            gestionarErrores(Input, response.email)
+
+        })
+        .catch(function(err) {
+            console.log(err);
+
+        }).finally(function() {
+            $("#loadingemailnuevo").addClass("invisible");
+
+        });
+}
+
+
+function validarFormulario2(event) {
+    event.preventDefault();
+    let emailInput = $("#email").val();
+    let Input = $("#email");
+    let usuario = $("#usuario").val()
+    $("#loadingpemailnuevo").removeClass("invisible");
+    let form = new FormData();
+    form.append("email", emailInput);
+    fetch("../servidor/validarFormularioUsuarios.php", {
+            method: 'post',
+            body: form
+        })
+        .then(function(response) {
+            return response.json()
+
+        })
+        .then(function(response) {
+            if (gestionarErrores(Input, response.email) === false) {
+                let form2 = new FormData();
+
+                form2.append("usuario", usuario);
+                form2.append("email", emailInput);
+                fetch("../servidor/editarUsuariosEmail.php", {
+                        method: 'post',
+                        body: form2
+                    }).then(function() {
+
+                        alert("ya esta insertado");
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+
+                    })
+            }
+
+        })
+        .catch(function(err) {
+            console.log(err);
+        }).finally(function() {
+            $("#loadingpemailnuevo").addClass("invisible");
+        });
 }
