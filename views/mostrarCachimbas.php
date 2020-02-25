@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,13 +22,17 @@
         href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/eb7b540af7.js" crossorigin="anonymous"></script>
     <script src="../js/tablas.js"></script>
 </head>
 
 <body>
 
 
-    <table id="tablaCachimbas" class="table table-striped table-bordered" style="width:100%">
+    <div class="container-fluid">
+        <div class="row">
+            <table id="tablaCachimbas" class="table table-striped table-bordered" style="width:100%">
 
         <thead>
             <tr>
@@ -46,6 +50,9 @@
 
 
     </table>
+        </div>
+    </div>
+    
 <div id="modalEliminar" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
