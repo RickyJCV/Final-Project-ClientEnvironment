@@ -39,6 +39,7 @@
                 <th>Stock</th>
                 <th>Acciones</th>
                 
+                
             </tr>
         </thead>
 

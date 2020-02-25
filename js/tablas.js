@@ -1,5 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#tablaCachimbas").DataTable({
+        "searching": false,
+        "paging": false,
         "ajax": "../servidor/tablaCachimba.php",
         "columns": [
             { "data": "marca" },
@@ -7,14 +9,13 @@ $(document).ready(function() {
             { "data": "color" },
             { "data": "precio" },
             { "data": "stock" },
-             {"render": $('#example tbody').on('click', 'button', function () {
-  var id = $(this).attr('id'); //$(this) refers the clicked button element
-  console.log(id);
-  return '<button data-idEliminar="'+id+'" data-accion="eliminar">Eliminar</button>';
-});
-                
-            
-        }},
+
+            {
+                data: 'id',
+                "render": function (data) {
+                    return '<button data-idEliminar="' + data + '" data-accion="eliminar">Eliminar</button>';
+                }
+            },
         ]
     });
 });
