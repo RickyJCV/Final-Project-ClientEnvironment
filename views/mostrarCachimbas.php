@@ -25,6 +25,8 @@
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/eb7b540af7.js" crossorigin="anonymous"></script>
     <script src="../js/tablas.js"></script>
+    <!-- JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -52,25 +54,26 @@
     </div>
     
 <div id="modalEliminar" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Eliminar cachimba</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>¿Estás seguro de eliminar esta cachimba?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button id="botonConfirmarEliminar" type="button" class="btn btn-primary"
-                        data-accion="confirmar-eliminar" data-ideliminar="">Confirmar</button>
-                </div>
-            </div>
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar Cachimba</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de eliminar esta cachimba?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button id="botonConfirmarEliminar" type="button"  class="btn btn-primary" data-accion="confirmar-eliminar" data-ideliminar="">Confirmar</button>
+      </div>
     </div>
+  </div>
+</div>
+
+
 
 
 </body>
