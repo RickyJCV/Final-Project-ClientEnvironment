@@ -13,7 +13,7 @@ $(document).ready(function () {
             {
                 data: 'id',
                 "render": function (data) {
-                    return '<button type="button" id="el" class="btn btn-danger" data-idEliminar="' + data + '" data-accion="eliminar"><i class="fas fa-trash-alt"></i></button>';
+                    return '<button type="button" class="btn btn-danger" data-idEliminar="' + data + '" data-accion="eliminar"><i class="fas fa-trash-alt"></i></button>';
                 }
             },
         ]
