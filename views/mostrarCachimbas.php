@@ -30,9 +30,14 @@
 </head>
 
 <body>
-
+<br>
+      <form>
+        <label for="buscar">Buscar</label>
+        <input id="buscar" type="search">
+      </form>
 
     <div class="container-fluid">
+      
         <div class="row">
             <table id="tablaCachimbas" class="table table-striped table-bordered" style="width:100%">
 
