@@ -1,13 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-    $("#buscar").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#tablaCachimbas tbody>tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
 
-    $("#tablaCachimbas").DataTable({
+
+    var tabla = $("#tablaCachimbas").DataTable({
         "searching": false,
         "paging": false,
         "destroy": true,
@@ -30,21 +25,21 @@ $(document).ready(function () {
 
             {
                 data: 'id',
-                "render": function (data) {
+                "render": function(data) {
                     return '<button type="button" class="btn btn-danger" data-idEliminar=' + data + ' data-accion="eliminar"><i class="fas fa-trash-alt" data-idEliminar=' + data + ' data-accion="eliminar"></i></button>';
                 }
             },
         ]
     });
-    $('#tablaCachimbas').DataTable().on("draw", function () {
-        $(function () {
-            $("button[data-accion='eliminar']").on("click", function (event) {
+    $('#tablaCachimbas').DataTable().on("draw", function() {
+        $(function() {
+            $("button[data-accion='eliminar']").on("click", function(event) {
                 let boton = $(event.target);
 
                 mostrarModalEliminar(boton.attr("data-ideliminar"));
             });
 
-            $("button[data-accion='confirmar-eliminar']").on("click", function (event) {
+            $("button[data-accion='confirmar-eliminar']").on("click", function(event) {
                 let boton = $(event.target);
                 eliminarCachimba(boton.attr("data-ideliminar"));
             });
@@ -62,11 +57,27 @@ $(document).ready(function () {
             fetch("../servidor/eliminarCachimbas.php", {
                 method: "POST",
                 body: form
-            }).then(function () {
+            }).then(function() {
                 $("#modalEliminar").modal("hide");
                 $("td>button[data-ideliminar=" + idEliminar + "]").parent().parent().remove();
             });
         }
+
     })
 
+
+    $("#buscar").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        console.log(value)
+        $.ajax({
+            url: "../servidor/filtrarCachimba.php",
+            data: { valor: value },
+            method: "POST",
+            dataType: "JSON",
+            success: (function(resultado) {
+                tabla.fnDestroy();
+                tabla.clear().rows.add(JSON.stringify(resultado)).draw();
+            })
+        });
+    });
 });
