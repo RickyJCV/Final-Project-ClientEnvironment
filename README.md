@@ -12,20 +12,30 @@
 ## ***Reparto de tareas***
 
 ***Ricardo Cabrera:*** 2 Peticiones de cada tecnología: XHR, FETCH y JQUERY
+
 ***Daniel Luque:*** 2 Peticiones de cada tecnología: XHR, FETCH y JQUERY
+
 ***Pablo Rodríguez:*** 2 Peticiones de cada tecnología: XHR, FETCH y JQUERY
+
 ***EN GRUPO:*** README Y MAQUETACIÓN
 
 ## ***Tiempo empleado en funciones***
 ***tablas.js:*** 4 Horas
+
 ***validacionCachimbas.js:*** 8 Horas
+
 ***validacionPedido.js:*** 8 Horas
+
 ***validacionUsuarios.js:*** 8 Horas
+
 
 > Una media de 30 minutos por cada función
 
 ## ***Tecnología usada en cada función***
 ***tablas.js:*** JQUERY
+
 ***validacionCachimbas.js:*** Insertar y validar formulario insertar (XHR) Editar y validar formulario editar (FETCH)
+
 ***validacionPedido.js:*** Insertar y validar formulario insertar (XHR) Editar y validar formulario editar (FETCH)
+
 ***validacionUsuarios.js:*** Insertar y validar formulario insertar (XHR) Editar y validar formulario editar (FETCH)
