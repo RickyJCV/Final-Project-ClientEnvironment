@@ -1,7 +1,7 @@
 <?php
 require_once "conexion.php";
 
-
+$nada=$_POST['nada'];
 $valor=$_POST['valor'];
 $rojo = $_POST["rojo"];
 $azul = $_POST["azul"];
@@ -13,6 +13,10 @@ $conexion->set_charset("utf8");
 
 $sql = " SELECT id ,marca, modelo,color,precio,stock from cachimbas WHERE "; 
 $sql .= " (marca like '%$valor%' or modelo like '%$valor%' or color like '%$valor%' or precio like '%$valor%' or stock like '%$valor%') ";
+
+if($nada != "" && $valor=""){
+    $sql="SELECT id ,marca, modelo,color,precio,stock from cachimbas";
+}
 
 if($rojo != ""){
     $sql .= "AND  color = '$rojo'";

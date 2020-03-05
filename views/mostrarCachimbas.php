@@ -118,7 +118,7 @@
 			</div>
 			<div class="col-6">
 				<h4>Colores</h4><br>
-				<input type="radio" id="nada" name="color" value="">
+				<input type="radio" id="nada" name="color" value="nada">
 				  <label for="nada">Sin filtro</label><br>
 
 				<input type="radio" id="rojo" name="color" value="roja">
