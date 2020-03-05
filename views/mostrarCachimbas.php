@@ -117,11 +117,27 @@
 			</table>
 			</div>
 			<div class="col-6">
-				<h4>Colore</h4><br>
+				<h4>Colores</h4><br>
+				<input type="radio" id="nada" name="color" value="">
+				  <label for="nada">Sin filtro</label><br>
+
+				<input type="radio" id="rojo" name="color" value="roja">
+				  <label for="rojo">ROJO</label><br>
+
+				  <input type="radio" id="azul" name="color" value="azul">
+				  <label for="azul">AZUL</label><br>
+
+				  <input type="radio" id="naranja" name="color" value="naranja">
+				  <label for="naranja">NARANJA</label><br>
+
+				  <input type="radio" id="negro" name="color" value="negra">
+  				<label for="negro">NEGRO</label><br>
+				<!--
 				<input type="checkbox" id="rojo" value="roja"><b>ROJO</b><br>
 				<input type="checkbox" id="azul" value="azul"><b>AZUL</b><br>
 				<input type="checkbox" id="naranja" value="naranja"><b>NARANJA</b><br>
 				<input type="checkbox" id="negro" value="negra"><b>NEGRO</b>
+-->
 			</div>
 		</div>
 	</div>
