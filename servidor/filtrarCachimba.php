@@ -12,7 +12,7 @@ $conexion = new mysqli($servidor, $usuario, $password,$baseDatos);
 $conexion->set_charset("utf8");
 
 $sql = " SELECT id ,marca, modelo,color,precio,stock from cachimbas WHERE "; 
-$sql .= " (marca like '%$valor%' or modelo like '%$valor%' or precio like '%$valor%' or stock like '%$valor%') ";
+$sql .= " (marca like '%$valor%' or modelo like '%$valor%' or color like '%$valor%' or precio like '%$valor%' or stock like '%$valor%') ";
 
 if($rojo != ""){
     $sql .= "AND  color = '$rojo'";
