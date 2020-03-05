@@ -19,7 +19,7 @@
 
 <body>
 
-    <!-- Barra de navegacion -->
+   <!-- Barra de navegacion -->
     <nav class="col-12 navbar navbar-expand-lg align-items-end bg-dark">
         <a class="navbar-brand" href="../index.html">TIENDA CACHIMBAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -31,24 +31,54 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="usuarios.php">usuarios</a>
+                    <!-- <a class="nav-link" href="views/usuarios.php">usuarios</a> -->
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cachimbas
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="cachimbas.php">Añadir</a>
+                            <a class="dropdown-item" href="editarCachimbas.php">Editar</a>
+                            <a class="dropdown-item" href="mostrarCachimbas.php">Mostrar/Borrar</a>
+
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pedidos.php">pedidos</a>
+                    <!-- <a class="nav-link" href="#">pedidos</a> -->
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pedidos
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="pedidos.php">Añadir</a>
+                            <a class="dropdown-item" href="editarPedidos.php">Editar</a>
+
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cachimbas.php">cachimbas</a>
+                    <!-- <a class="nav-link" href="views/cachimbas.php">cachimbas</a> -->
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Usuarios
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="usuarios.php">Añadir</a>
+                            <a class="dropdown-item" href="editarUsuarios.php">Editar</a>
+
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="row col-12">
-            <div class="md-form mt-0">
-                <input class="form-control" type="text" placeholder="Buscar..." aria-label="Search">
-            </div>
-        </div>
-    </div>
 
 
 

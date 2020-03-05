@@ -31,54 +31,56 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="usuarios.php">usuarios</a>
+                    <!-- <a class="nav-link" href="views/usuarios.php">usuarios</a> -->
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cachimbas
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="cachimbas.php">Añadir</a>
+                            <a class="dropdown-item" href="editarCachimbas.php">Editar</a>
+                            <a class="dropdown-item" href="mostrarCachimbas.php">Mostrar/Borrar</a>
+
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">pedidos</a>
+                    <!-- <a class="nav-link" href="#">pedidos</a> -->
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pedidos
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="pedidos.php">Añadir</a>
+                            <a class="dropdown-item" href="editarPedidos.php">Editar</a>
+
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">cachimbas</a>
+                    <!-- <a class="nav-link" href="views/cachimbas.php">cachimbas</a> -->
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Usuarios
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="usuarios.php">Añadir</a>
+                            <a class="dropdown-item" href="editarUsuarios.php">Editar</a>
+
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="row">
-        <aside class="col-sm-2">
-            <div class="card">
-                <article class="card-group-item">
-                    <header class="card-header">
-                        <h6 class="title">Marcas</h6>
-                    </header>
-                    <div class="filter-content">
-                        <div class="card-body">
-                            <form>
-                                <label class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <span class="form-check-label">
-                                        Kaya
-                                    </span>
-                                </label> <!-- form-check.// -->
-                                <label class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <span class="form-check-label">
-                                        Whookah
-                                    </span>
-                                </label> <!-- form-check.// -->
-                                <label class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <span class="form-check-label">
-                                        Aladin
-                                    </span>
-                                </label>
-                            </form>
-
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </aside>
-    </div>
+    
 
     <!-- FORMULARIO VALIDACION XHR -->
 
