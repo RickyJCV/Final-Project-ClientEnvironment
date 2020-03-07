@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var tabla = $("#tablaCachimbas").DataTable({
         "searching": false,
         "paging": false,
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
             {
                 data: 'id',
-                "render": function(data) {
+                "render": function (data) {
                     return '<button type="button" class="btn btn-danger" data-idEliminar=' + data + ' data-accion="eliminar"><i class="fas fa-trash-alt" data-idEliminar=' + data + ' data-accion="eliminar"></i></button>';
                 }
             },
@@ -34,15 +34,15 @@ $(document).ready(function() {
         $("#modalEliminar").modal("show");
     }
 
-    $('#tablaCachimbas').DataTable().on("draw", function() {
-        $(function() {
-            $("button[data-accion='eliminar']").on("click", function(event) {
+    $('#tablaCachimbas').DataTable().on("draw", function () {
+        $(function () {
+            $("button[data-accion='eliminar']").on("click", function (event) {
                 let boton = $(event.target);
 
                 mostrarModalEliminar(boton.attr("data-ideliminar"));
             });
 
-            $("button[data-accion='confirmar-eliminar']").on("click", function(event) {
+            $("button[data-accion='confirmar-eliminar']").on("click", function (event) {
                 let boton = $(event.target);
                 eliminarCachimba(boton.attr("data-ideliminar"));
             });
@@ -57,7 +57,7 @@ $(document).ready(function() {
             fetch("../servidor/eliminarCachimbas.php", {
                 method: "POST",
                 body: form
-            }).then(function() {
+            }).then(function () {
                 $("#modalEliminar").modal("hide");
                 $("td>button[data-ideliminar=" + idEliminar + "]").parent().parent().remove();
             });
@@ -66,22 +66,22 @@ $(document).ready(function() {
     })
 
 
-    $("#buscar").on("keyup", function() {
+    $("#buscar").on("keyup", function () {
         buscarCachimbas();
     });
-    $("#nada").on("click", function() {
+    $("#nada").on("click", function () {
         buscarCachimbas();
     });
-    $("#rojo").on("click", function() {
+    $("#rojo").on("click", function () {
         buscarCachimbas();
     });
-    $("#azul").on("click", function() {
+    $("#azul").on("click", function () {
         buscarCachimbas();
     });
-    $("#naranja").on("click", function() {
+    $("#naranja").on("click", function () {
         buscarCachimbas();
     });
-    $("#negro").on("click", function() {
+    $("#negro").on("click", function () {
         buscarCachimbas();
     });
 
@@ -96,14 +96,22 @@ $(document).ready(function() {
 
         $.ajax({
             url: "../servidor/filtrarCachimba.php",
-            data: { valor: value, nada: nada, rojo: valorRojo, azul: valorAzul, naranja: valorNaranja, negro: valorNegro },
+            data: {
+                valor: value,
+                nada: nada,
+                rojo: valorRojo,
+                azul: valorAzul,
+                naranja: valorNaranja,
+                negro: valorNegro
+            },
             method: "POST",
             dataType: "JSON",
-            success: (function(resultado) {
+            success: (function (resultado) {
                 tabla.clear().draw();
                 tabla.rows.add(resultado.data);
                 tabla.draw();
             })
         });
     }
+
 });
