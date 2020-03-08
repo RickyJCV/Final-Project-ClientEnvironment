@@ -20,6 +20,8 @@
 ***EN GRUPO:*** README Y MAQUETACIÓN
 
 ## ***Tiempo empleado en funciones***
+***paginacionCachimbas.html/paginacionPedidos.html/paginacionUsuarios.html(Incluido Javascript en el mismo archivo):*** 4 Horas
+
 ***tablas.js:*** 4 Horas
 
 ***validacionCachimbas.js:*** 8 Horas
