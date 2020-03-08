@@ -32,6 +32,8 @@
 > Una media de 30 minutos por cada función
 
 ## ***Tecnología usada en cada función***
+***paginacionCachimbas.html/paginacionPedidos.html/paginacionUsuarios.html(Incluido Javascript en el mismo archivo):*** JQUERY
+
 ***tablas.js:*** JQUERY
 
 ***validacionCachimbas.js:*** Insertar y validar formulario insertar (XHR) Editar y validar formulario editar (FETCH)
