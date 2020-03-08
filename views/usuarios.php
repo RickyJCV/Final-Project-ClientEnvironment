@@ -20,7 +20,7 @@
 <body>
 
    <!-- Barra de navegacion -->
-    <nav class="col-12 navbar navbar-expand-lg align-items-end bg-dark">
+   <nav class="col-12 navbar navbar-expand-lg align-items-end bg-dark">
         <a class="navbar-brand" href="../index.html">TIENDA CACHIMBAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,7 @@
                             <a class="dropdown-item" href="cachimbas.php">Añadir</a>
                             <a class="dropdown-item" href="editarCachimbas.php">Editar</a>
                             <a class="dropdown-item" href="mostrarCachimbas.php">Mostrar/Borrar</a>
+                            <a class="dropdown-item" href="paginacionCachimbas.html">Paginar</a>
 
                         </div>
                     </div>
@@ -57,6 +58,8 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="pedidos.php">Añadir</a>
                             <a class="dropdown-item" href="editarPedidos.php">Editar</a>
+                            <a class="dropdown-item" href="mostrarPedidos.php">Mostrar/Borrar</a>
+                            <a class="dropdown-item" href="paginacionPedidos.html">Paginar</a>
 
                         </div>
                     </div>
@@ -72,6 +75,8 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="usuarios.php">Añadir</a>
                             <a class="dropdown-item" href="editarUsuarios.php">Editar</a>
+                            <a class="dropdown-item" href="mostrarUsuarios.php">Mostrar/Borrar</a>
+                            <a class="dropdown-item" href="paginacionUsuarios.html">Paginar</a>
 
                         </div>
                     </div>
